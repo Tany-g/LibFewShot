@@ -26,13 +26,13 @@ save_part:
 classifier:
   name: SKDModel
   kwargs:
-    feat_dim: 1600
+    feat_dim: 512
     num_class: 200
     gamma: 1.0
     alpha: 0.1
     is_distill: False
-    emb_func_path: ./results/SKDModel-miniImageNet--ravi-Conv64F-5-1-Sep-23-2021-15-16-27/checkpoints/emb_func_best.pth
-    cls_classifier_path: ./results/SKDModel-miniImageNet--ravi-Conv64F-5-1-Sep-23-2021-15-16-27/checkpoints/cls_classifier_best.pth
+    emb_func_path: ./results/SKDModel-miniImageNet--ravi-wrn-5-1-Sep-23-2021-15-16-27/checkpoints/emb_func_best.pth
+    cls_classifier_path: ./results/SKDModel-miniImageNet--ravi-wrn-5-1-Sep-23-2021-15-16-27/checkpoints/cls_classifier_best.pth
 
 
 # backbone:
@@ -50,15 +50,16 @@ classifier:
 #   kwargs:
 #     keep_prob: 0.0
 
-# backbone:
-#   name: resnet18
-#   kwargs:
-
 backbone:
-  name: WRN
+  name: resnet18
   kwargs:
-    depth: 10
-    widen_factor: 10
-    dropRate: 0.0
-    avg_pool: True
     is_flatten: True
+
+# backbone:
+#   name: WRN
+#   kwargs:
+#     depth: 10
+#     widen_factor: 10
+#     dropRate: 0.0
+#     avg_pool: True
+#     is_flatten: True

@@ -15,8 +15,12 @@ def main(rank, config):
 
 
 if __name__ == "__main__":
-    config = Config("./config/proto.yaml").get_config_dict()
-
+    # config = Config("./config/proto.yaml").get_config_dict()
+    # config = Config("./config/test_install.yaml").get_config_dict()
+    # config = Config("./config/skd.yaml").get_config_dict()
+    # config = Config("./config/rfs.yaml").get_config_dict()
+    # config = Config("./config/renet.yaml").get_config_dict()
+    config = Config("./config/skd_wrn.yaml").get_config_dict()
     if config["n_gpu"] > 1:
         os.environ["CUDA_VISIBLE_DEVICES"] = config["device_ids"]
         torch.multiprocessing.spawn(main, nprocs=config["n_gpu"], args=(config,))

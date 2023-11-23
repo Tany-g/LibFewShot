@@ -4,7 +4,7 @@ includes:
   - headers/misc.yaml
   - headers/model.yaml
   - headers/optimizer.yaml
-  - classifiers/Proto.yaml
+  - classifiers/SKD.yaml
   - backbones/resnet12.yaml
 
 
@@ -16,6 +16,21 @@ query_num: 15
 episode_size: 2
 train_episode: 100
 test_episode: 100
+
+
+classifier:
+  name: SKDModel
+  kwargs:
+    feat_dim: 1600
+    num_class: 204
+    gamma: 1.0
+    alpha: 0.1
+    is_distill: False
+    emb_func_path: ./results/SKDModel-miniImageNet--ravi-Conv64F-5-1-Sep-23-2021-15-16-27/checkpoints/emb_func_best.pth
+    cls_classifier_path: ./results/SKDModel-miniImageNet--ravi-Conv64F-5-1-Sep-23-2021-15-16-27/checkpoints/cls_classifier_best.pth
+
+
+
 
 backbone:
   name: Conv64F

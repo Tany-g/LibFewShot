@@ -78,6 +78,7 @@ class Trainer(object):
         for epoch_idx in range(self.from_epoch + 1, self.config["epoch"]):
             if self.distribute and self.model_type == ModelType.FINETUNING:
                 self.train_loader[0].sampler.set_epoch(epoch_idx)
+                print(self.train_loader[0].sampler)
             print("============ Train on the train set ============")
             print("learning rate: {}".format(self.scheduler.get_last_lr()))
             train_acc = self._train(epoch_idx)
@@ -587,6 +588,7 @@ class Trainer(object):
             if "dist_url" not in self.config
             else self.config["dist_url"],
         )
+        
         torch.cuda.set_device(self.rank)
 
         return device, list_ids
